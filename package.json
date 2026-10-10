@@ -1,0 +1,28 @@
+{
+  "name": "bookhub",
+  "version": "1.0.0",
+  "description": "BookHub - Online Book Store Full-Stack Web Application",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node database/seed.js && node backend/server.js",
+    "seed": "node database/seed.js",
+    "dev": "node backend/server.js"
+  },
+  "keywords": [
+    "bookstore",
+    "fullstack",
+    "express",
+    "sqlite3",
+    "vanilla-js"
+  ],
+  "author": "University Web Dev Assignment",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "sqlite3": "^6.0.1"
+  }
+}

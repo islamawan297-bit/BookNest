@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="View complete details, rating, description, and order books online at BookHub.">
+    <title>Book Details - BookHub</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">📚</span> BookHub
+            </a>
+            <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation menu">☰</button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="books.html" class="nav-link active">Books</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li id="adminLinkContainer"></li>
+            </ul>
+            <div class="nav-actions" id="navActions"></div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container section">
+        <div id="detailsAlertContainer"></div>
+        <div id="bookDetailsContent" style="background: white; border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 3rem; margin-top: 1rem;">
+            <p style="text-align: center; color: var(--text-muted);">Loading book details...</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 BookHub – University Web Development Project.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', loadBookDetails);
+
+        async function loadBookDetails() {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id');
+
+            if (!id) {
+                window.location.href = 'books.html';
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/books/${id}`);
+                const data = await response.json();
+
+                if (!data.success || !data.book) {
+                    document.getElementById('bookDetailsContent').innerHTML = `
+                        <div style="text-align: center; padding: 2rem;">
+                            <h3>Book Not Found</h3>
+                            <a href="books.html" class="btn btn-primary" style="margin-top: 1rem;">Back to Catalog</a>
+                        </div>
+                    `;
+                    return;
+                }
+
+                const book = data.book;
+                document.title = `${book.title} - BookHub`;
+
+                document.getElementById('bookDetailsContent').innerHTML = `
+                    <div style="display: grid; grid-template-columns: 320px 1fr; gap: 3rem;">
+                        <div>
+                            <img src="${escapeHtml(book.cover_image)}" alt="${escapeHtml(book.title)}" style="width: 100%; border-radius: var(--radius-md); box-shadow: var(--shadow-lg);">
+                        </div>
+                        <div>
+                            <span class="badge badge-info" style="margin-bottom: 0.75rem;">${escapeHtml(book.category)}</span>
+                            <h1 style="font-size: 2.2rem; margin-bottom: 0.5rem;">${escapeHtml(book.title)}</h1>
+                            <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 1rem;">Author: <strong>${escapeHtml(book.author)}</strong></p>
+
+                            <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem;">
+                                <span style="font-size: 2rem; font-weight: 800; color: var(--primary);">$${parseFloat(book.price).toFixed(2)}</span>
+                                <span style="color: var(--accent); font-weight: 600; font-size: 1.1rem;">★ ${book.rating ? book.rating.toFixed(1) : '4.5'} Rating</span>
+                                <span style="color: ${book.stock > 0 ? 'var(--success)' : 'var(--danger)'}; font-weight: 600;">
+                                    ${book.stock > 0 ? `In Stock (${book.stock} left)` : 'Out of Stock'}
+                                </span>
+                            </div>
+
+                            <div style="margin-bottom: 2rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 1.5rem 0;">
+                                <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Book Synopsis</h3>
+                                <p style="color: var(--text-main); line-height: 1.7;">${escapeHtml(book.description)}</p>
+                            </div>
+
+                            <!-- Purchase Form -->
+                            <form id="detailOrderForm" style="background: var(--light-bg); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border);">
+                                <h3 style="font-size: 1.1rem; margin-bottom: 1rem;">Place Order Now</h3>
+                                <div class="form-group">
+                                    <label class="form-label">Quantity</label>
+                                    <input type="number" id="detailQty" class="form-control" value="1" min="1" max="${book.stock}" required style="max-width: 120px;">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Delivery Address</label>
+                                    <textarea id="detailAddress" class="form-control" rows="2" placeholder="Street, City, Zip Code" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary" ${book.stock <= 0 ? 'disabled' : ''}>Confirm & Place Order</button>
+                            </form>
+                        </div>
+                    </div>
+                `;
+
+                document.getElementById('detailOrderForm').addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const quantity = document.getElementById('detailQty').value;
+                    const shipping_address = document.getElementById('detailAddress').value.trim();
+
+                    try {
+                        const orderRes = await fetch(`${API_BASE_URL}/api/orders`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ book_id: book.id, quantity, shipping_address })
+                        });
+
+                        const orderData = await orderRes.json();
+
+                        if (orderData.success) {
+                            showAlert('detailsAlertContainer', 'Order placed successfully! Redirecting to your dashboard...', 'success');
+                            setTimeout(() => { window.location.href = 'user-dashboard.html'; }, 1500);
+                        } else {
+                            if (orderRes.status === 401) {
+                                showAlert('detailsAlertContainer', 'Please log in to place an order.', 'danger');
+                                setTimeout(() => { window.location.href = 'login.html'; }, 1500);
+                            } else {
+                                showAlert('detailsAlertContainer', orderData.message || 'Order failed.', 'danger');
+                            }
+                        }
+                    } catch (err) {
+                        console.error('Detail order error:', err);
+                    }
+                });
+            } catch (error) {
+                console.error('Error fetching details:', error);
+            }
+        }
+    </script>
+</body>
+</html>

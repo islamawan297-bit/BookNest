@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about BookHub - Our mission to connect readers with extraordinary books.">
+    <title>About Us - BookHub</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">📚</span> BookHub
+            </a>
+            <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation menu">☰</button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="books.html" class="nav-link">Books</a></li>
+                <li><a href="about.html" class="nav-link active">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li id="adminLinkContainer"></li>
+            </ul>
+            <div class="nav-actions" id="navActions"></div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>About BookHub</h1>
+            <p>Connecting curious minds with world-class literature and knowledge</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container section">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-bottom: 4rem;">
+            <div>
+                <h2 style="font-size: 2.2rem; margin-bottom: 1.25rem; color: var(--dark);">Our Mission & Story</h2>
+                <p style="margin-bottom: 1rem; color: var(--text-muted); font-size: 1.05rem;">
+                    BookHub was founded as a state-of-the-art university project dedicated to building an accessible, high-performance e-commerce platform for book lovers around the globe.
+                </p>
+                <p style="margin-bottom: 1.5rem; color: var(--text-muted); font-size: 1.05rem;">
+                    Whether you are searching for cutting-edge software engineering manuals, life-changing self-improvement guides, or mesmerizing fiction stories, BookHub provides seamless search, instant ordering, and real-time inventory tracking.
+                </p>
+                <div style="display: flex; gap: 1.5rem;">
+                    <div>
+                        <h4 style="font-size: 1.8rem; color: var(--primary); font-weight: 800;">10,000+</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Active Readers</p>
+                    </div>
+                    <div>
+                        <h4 style="font-size: 1.8rem; color: var(--primary); font-weight: 800;">500+</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Curated Titles</p>
+                    </div>
+                    <div>
+                        <h4 style="font-size: 1.8rem; color: var(--primary); font-weight: 800;">99.9%</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Satisfaction Rate</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <img src="https://images.unsplash.com/photo-1507842229565-8a402b15245f?auto=format&fit=crop&w=800&q=80" alt="Library" style="border-radius: var(--radius-lg); box-shadow: var(--shadow-xl);">
+            </div>
+        </div>
+
+        <!-- Tech Stack Highlights -->
+        <div style="background: white; border: 1px solid var(--border); padding: 3rem; border-radius: var(--radius-lg); text-align: center;">
+            <h2 style="margin-bottom: 1rem;">Powered by Modern Full-Stack Architecture</h2>
+            <p style="color: var(--text-muted); max-width: 680px; margin: 0 auto 2.5rem;">
+                Built according to strict software engineering standards using clean REST APIs, secure authentication, and robust database persistence.
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+                <div style="padding: 1.5rem; background: var(--light-bg); border-radius: var(--radius-md);">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🌐</div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 0.25rem;">HTML5 & CSS3</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">Semantic elements, flexbox grid, and responsive styling.</p>
+                </div>
+                <div style="padding: 1.5rem; background: var(--light-bg); border-radius: var(--radius-md);">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">⚡</div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 0.25rem;">Vanilla JavaScript</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">Asynchronous fetch API calls, client validation, dynamic DOM.</p>
+                </div>
+                <div style="padding: 1.5rem; background: var(--light-bg); border-radius: var(--radius-md);">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🚀</div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 0.25rem;">Node.js & Express</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">RESTful routing, session auth, bcrypt password hashing.</p>
+                </div>
+                <div style="padding: 1.5rem; background: var(--light-bg); border-radius: var(--radius-md);">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🗄️</div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 0.25rem;">SQLite Database</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">Relational schema with users, books, orders, and messages.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 BookHub – University Web Development Project.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html>

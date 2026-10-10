@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+
+# Scratch and test files
+scratch/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Temporary & database lock files
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Operating System files
+.DS_Store
+Thumbs.db
+Desktop.ini
