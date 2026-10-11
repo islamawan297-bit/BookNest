@@ -40,19 +40,45 @@ app.use(session({
     }
 }));
 
-// API Routes
-app.use('/api/auth', require('./routes/authRoutes'));
-app.use('/api/books', require('./routes/bookRoutes'));
-app.use('/api/contact', require('./routes/contactRoutes'));
-app.use('/api/orders', require('./routes/orderRoutes'));
+// URL Normalizer for Vercel Serverless Function invocations
+// Vercel serverless functions in api/ can strip the '/api' prefix from req.url.
+// This normalizes req.url back to '/api/...' so Express routes match predictably.
+app.use((req, res, next) => {
+    if (!req.url.startsWith('/api')) {
+        const pathOnly = req.url.split('?')[0];
+        const isApiRoute = ['/books', '/auth', '/contact', '/orders', '/health'].some(
+            prefix => pathOnly === prefix || pathOnly.startsWith(prefix + '/')
+        );
+        if (isApiRoute) {
+            req.url = '/api' + req.url;
+        }
+    }
+    next();
+});
+
+// Root API status endpoint
+app.get(['/api', '/api/'], (req, res) => {
+    res.json({
+        success: true,
+        message: 'BookHub REST API is operational',
+        endpoints: ['/api/books', '/api/auth/me', '/api/health']
+    });
+});
+
+// API Routes (Mounted on both /api/* and /* for maximum serverless compatibility)
+app.use(['/api/auth', '/auth'], require('./routes/authRoutes'));
+app.use(['/api/books', '/books'], require('./routes/bookRoutes'));
+app.use(['/api/contact', '/contact'], require('./routes/contactRoutes'));
+app.use(['/api/orders', '/orders'], require('./routes/orderRoutes'));
 
 // Health & Environment Diagnostic Route
-app.get('/api/health', (req, res) => {
+app.get(['/api/health', '/health'], (req, res) => {
     res.json({
         success: true,
         status: 'healthy',
         environment: isProduction ? 'production' : 'development',
         database: db.clientType,
+        url: req.url,
         timestamp: new Date().toISOString()
     });
 });
@@ -61,7 +87,7 @@ app.get('/api/health', (req, res) => {
 app.use(express.static(path.join(__dirname, '../frontend'), { extensions: ['html'] }));
 
 // Handle 404 for unhandled API routes
-app.use('/api', (req, res) => {
+app.use(['/api', '/api/*'], (req, res) => {
     res.status(404).json({ success: false, message: 'API endpoint not found.' });
 });
 
