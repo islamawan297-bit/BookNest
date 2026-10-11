@@ -4,6 +4,7 @@
   "description": "BookHub - Online Book Store Full-Stack Web Application",
   "main": "backend/server.js",
   "scripts": {
+    "build": "node -e \"const fs = require('fs'); fs.cpSync('frontend', 'public', { recursive: true });\"",
     "start": "node database/seed.js && node backend/server.js",
     "seed": "node database/seed.js",
     "dev": "node backend/server.js"

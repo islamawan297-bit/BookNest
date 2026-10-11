@@ -2,62 +2,14 @@
   "version": 2,
   "cleanUrls": true,
   "functions": {
-    "api/**": {
-      "includeFiles": "frontend/**,database/**"
+    "api/index.js": {
+      "includeFiles": "public/**,frontend/**,database/**"
     }
   },
   "rewrites": [
     {
       "source": "/api/(.*)",
       "destination": "/api"
-    },
-    {
-      "source": "/",
-      "destination": "/frontend/index.html"
-    },
-    {
-      "source": "/books",
-      "destination": "/frontend/books.html"
-    },
-    {
-      "source": "/book-details",
-      "destination": "/frontend/book-details.html"
-    },
-    {
-      "source": "/about",
-      "destination": "/frontend/about.html"
-    },
-    {
-      "source": "/contact",
-      "destination": "/frontend/contact.html"
-    },
-    {
-      "source": "/login",
-      "destination": "/frontend/login.html"
-    },
-    {
-      "source": "/register",
-      "destination": "/frontend/register.html"
-    },
-    {
-      "source": "/user-dashboard",
-      "destination": "/frontend/user-dashboard.html"
-    },
-    {
-      "source": "/admin-dashboard",
-      "destination": "/frontend/admin-dashboard.html"
-    },
-    {
-      "source": "/css/(.*)",
-      "destination": "/frontend/css/$1"
-    },
-    {
-      "source": "/js/(.*)",
-      "destination": "/frontend/js/$1"
-    },
-    {
-      "source": "/(.*).html",
-      "destination": "/frontend/$1.html"
     }
   ]
 }

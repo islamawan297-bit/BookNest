@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Log in to your BookHub account to view your orders and dashboard.">
+    <title>Sign In - BookHub</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">📚</span> BookHub
+            </a>
+            <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation menu">☰</button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="books.html" class="nav-link">Books</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li id="adminLinkContainer"></li>
+            </ul>
+            <div class="nav-actions" id="navActions"></div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container section">
+        <div class="form-card">
+            <h2 style="font-size: 1.8rem; text-align: center; margin-bottom: 0.5rem;">Welcome Back</h2>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 1.5rem;">Sign in to access your BookHub dashboard</p>
+
+            <div id="alertContainer"></div>
+
+            <!-- Demo Quick Fill Buttons for Project Evaluator -->
+            <div style="background: var(--light-bg); border: 1px dashed var(--primary); padding: 0.9rem; border-radius: var(--radius-md); margin-bottom: 1.5rem; text-align: center;">
+                <p style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); margin-bottom: 0.5rem;">🎓 DEMO ACCOUNTS FOR EVALUATION:</p>
+                <div style="display: flex; gap: 0.5rem; justify-content: center;">
+                    <button type="button" id="demoUserBtn" class="btn btn-secondary btn-sm">Auto-fill User</button>
+                    <button type="button" id="demoAdminBtn" class="btn btn-primary btn-sm">Auto-fill Admin</button>
+                </div>
+            </div>
+
+            <form id="loginForm" novalidate>
+                <div class="form-group">
+                    <label class="form-label" for="loginEmail">Email Address</label>
+                    <input type="email" id="loginEmail" class="form-control" placeholder="e.g. john@example.com">
+                    <span class="form-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" class="form-control" placeholder="Enter your password">
+                    <span class="form-error"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">Sign In</button>
+            </form>
+
+            <div style="text-align: center; margin-top: 1.5rem; font-size: 0.9rem; color: var(--text-muted);">
+                Don't have an account? <a href="register.html" style="font-weight: 600;">Register here</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 BookHub – University Web Development Project.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

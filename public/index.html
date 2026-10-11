@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BookHub - Your premier destination for discovering, reading, and purchasing online books across all genres.">
+    <title>BookHub - Online Book Store</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">📚</span> BookHub
+            </a>
+            <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation menu">☰</button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="books.html" class="nav-link">Books</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li id="adminLinkContainer"></li>
+            </ul>
+            <div class="nav-actions" id="navActions">
+                <!-- Dynamically populated by main.js -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <h1>Discover Your Next Great Favorite Read</h1>
+                    <p>Explore thousands of bestselling books, timeless literature, and technical mastery guides at unbeatable prices with instant nationwide delivery.</p>
+                    <div class="hero-btns">
+                        <a href="books.html" class="btn btn-primary">Browse All Books</a>
+                        <a href="register.html" class="btn btn-secondary">Create Account</a>
+                    </div>
+                </div>
+                <div class="hero-img-box">
+                    <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=800&q=80" alt="BookHub Reading Collection">
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Categories -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <h2 class="section-title">Popular Categories</h2>
+                        <p style="color: var(--text-muted); margin-top: 0.5rem;">Explore our curated selections grouped by interest</p>
+                    </div>
+                    <a href="books.html" class="btn btn-outline btn-sm">View All Categories →</a>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+                    <a href="books.html?category=Tech%20%26%20Science" style="background: white; padding: 2rem 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border); text-align: center; color: var(--text-main); transition: var(--transition);" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">💻</div>
+                        <h3 style="font-size: 1.1rem;">Tech & Science</h3>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">Coding, Software & Physics</p>
+                    </a>
+                    <a href="books.html?category=Fiction" style="background: white; padding: 2rem 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border); text-align: center; color: var(--text-main); transition: var(--transition);" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">📖</div>
+                        <h3 style="font-size: 1.1rem;">Fiction</h3>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">Novels & Storytelling</p>
+                    </a>
+                    <a href="books.html?category=Non-Fiction" style="background: white; padding: 2rem 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border); text-align: center; color: var(--text-main); transition: var(--transition);" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🧠</div>
+                        <h3 style="font-size: 1.1rem;">Non-Fiction</h3>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">Habits, Self-Growth & Psychology</p>
+                    </a>
+                    <a href="books.html?category=Fantasy" style="background: white; padding: 2rem 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border); text-align: center; color: var(--text-main); transition: var(--transition);" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🐉</div>
+                        <h3 style="font-size: 1.1rem;">Fantasy</h3>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">Epic Worldbuilding & Magic</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Books Grid -->
+        <section class="section" style="background-color: white; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <h2 class="section-title">Featured Books</h2>
+                        <p style="color: var(--text-muted); margin-top: 0.5rem;">Hand-picked bestsellers ready for order</p>
+                    </div>
+                    <a href="books.html" class="btn btn-primary btn-sm">Explore Store →</a>
+                </div>
+                <div class="books-grid" id="booksGrid">
+                    <!-- Books dynamically populated by books.js -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal Container for Order Quick View -->
+    <div id="modalContainer"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>📚 BookHub</h3>
+                    <p>BookHub is a full-stack online book store built for university web development excellence using Node.js, Express, and SQLite.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="books.html">Browse Books</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Account</h4>
+                    <ul>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="register.html">Register</a></li>
+                        <li><a href="user-dashboard.html">User Dashboard</a></li>
+                        <li><a href="admin-dashboard.html">Admin Dashboard</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contact Support</h4>
+                    <ul>
+                        <li>📧 support@bookhub.com</li>
+                        <li>📞 +1 (800) 555-BOOK</li>
+                        <li>📍 University Campus, CS Dept</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 BookHub – University Web Development Project. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/books.js"></script>
+</body>
+</html>

@@ -83,8 +83,11 @@ app.get(['/api/health', '/health'], (req, res) => {
     });
 });
 
-// Serve static frontend files (with .html extension resolution)
-app.use(express.static(path.join(__dirname, '../frontend'), { extensions: ['html'] }));
+// Serve static frontend files (prefers public CDN folder, falls back to frontend)
+const staticDir = fs.existsSync(path.join(__dirname, '../public'))
+    ? path.join(__dirname, '../public')
+    : path.join(__dirname, '../frontend');
+app.use(express.static(staticDir, { extensions: ['html'] }));
 
 // Handle 404 for unhandled API routes
 app.use(['/api', '/api/*'], (req, res) => {
@@ -93,8 +96,9 @@ app.use(['/api', '/api/*'], (req, res) => {
 
 // Fallback to index.html or 404.html for HTML page navigation
 app.use((req, res) => {
-    if (req.accepts('html')) {
-        res.status(404).sendFile(path.join(__dirname, '../frontend/404.html'));
+    const errorPage = path.join(staticDir, '404.html');
+    if (req.accepts('html') && fs.existsSync(errorPage)) {
+        res.status(404).sendFile(errorPage);
     } else {
         res.status(404).json({ success: false, message: 'Resource not found.' });
     }

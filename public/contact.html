@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact BookHub support team for bulk inquiries, suggestions, or feedback.">
+    <title>Contact Us - BookHub</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">📚</span> BookHub
+            </a>
+            <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation menu">☰</button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="books.html" class="nav-link">Books</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+                <li id="adminLinkContainer"></li>
+            </ul>
+            <div class="nav-actions" id="navActions"></div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Get In Touch With Us</h1>
+            <p>Have questions, bulk order requests, or feedback? Send us a message!</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container section">
+        <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 3rem;">
+            <!-- Contact Info Sidebar -->
+            <div>
+                <h2 style="font-size: 1.8rem; margin-bottom: 1.5rem;">Contact Information</h2>
+                <p style="color: var(--text-muted); margin-bottom: 2rem;">
+                    Our customer support team is available Monday through Friday, 9:00 AM to 6:00 PM to assist you with book inquiries and order assistance.
+                </p>
+
+                <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+                    <div style="display: flex; align-items: flex-start; gap: 1rem; background: white; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border);">
+                        <div style="font-size: 1.5rem; background: var(--primary-light); padding: 0.5rem 0.75rem; border-radius: var(--radius-sm); color: var(--primary);">📍</div>
+                        <div>
+                            <h4 style="font-size: 1rem; margin-bottom: 0.2rem;">Location</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-muted);">CS Building, University Campus, Suite 402</p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; align-items: flex-start; gap: 1rem; background: white; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border);">
+                        <div style="font-size: 1.5rem; background: var(--primary-light); padding: 0.5rem 0.75rem; border-radius: var(--radius-sm); color: var(--primary);">📧</div>
+                        <div>
+                            <h4 style="font-size: 1rem; margin-bottom: 0.2rem;">Email Us</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-muted);">support@bookhub.com</p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; align-items: flex-start; gap: 1rem; background: white; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border);">
+                        <div style="font-size: 1.5rem; background: var(--primary-light); padding: 0.5rem 0.75rem; border-radius: var(--radius-sm); color: var(--primary);">📞</div>
+                        <div>
+                            <h4 style="font-size: 1rem; margin-bottom: 0.2rem;">Call Us</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-muted);">+1 (800) 555-BOOK</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form Card -->
+            <div style="background: white; padding: 2.5rem; border-radius: var(--radius-lg); border: 1px solid var(--border); box-shadow: var(--shadow-sm);">
+                <h2 style="font-size: 1.8rem; margin-bottom: 1.5rem;">Send a Message</h2>
+                <div id="contactAlert"></div>
+
+                <form id="contactForm" novalidate>
+                    <div class="form-group">
+                        <label class="form-label" for="contactName">Your Full Name</label>
+                        <input type="text" id="contactName" class="form-control" placeholder="e.g. Alice Williams">
+                        <span class="form-error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="contactEmail">Email Address</label>
+                        <input type="email" id="contactEmail" class="form-control" placeholder="e.g. alice@example.com">
+                        <span class="form-error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="contactSubject">Subject</label>
+                        <input type="text" id="contactSubject" class="form-control" placeholder="e.g. Inquiry about book availability">
+                        <span class="form-error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="contactMessage">Message</label>
+                        <textarea id="contactMessage" class="form-control" rows="5" placeholder="Write your message here..."></textarea>
+                        <span class="form-error"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 BookHub – University Web Development Project.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/contact.js"></script>
+</body>
+</html>

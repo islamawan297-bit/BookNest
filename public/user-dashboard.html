@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="View your BookHub user profile and order history.">
+    <title>User Dashboard - BookHub</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">📚</span> BookHub
+            </a>
+            <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation menu">☰</button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="books.html" class="nav-link">Books</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li id="adminLinkContainer"></li>
+            </ul>
+            <div class="nav-actions" id="navActions"></div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Customer Dashboard</h1>
+            <p>Track your orders, view account status, and manage purchases</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container section">
+        <div class="dashboard-grid">
+            <!-- Sidebar -->
+            <div class="dashboard-sidebar">
+                <div class="profile-info">
+                    <div class="profile-avatar" id="userAvatarLetter">U</div>
+                    <h3 id="userProfileName" style="font-size: 1.25rem;">User Name</h3>
+                    <p id="userProfileEmail" style="color: var(--text-muted); font-size: 0.88rem;">user@example.com</p>
+                    <span class="badge badge-success" style="margin-top: 0.5rem;">Customer Account</span>
+                </div>
+
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem;">
+                    <li><a href="user-dashboard.html" class="btn btn-secondary" style="width: 100%; justify-content: flex-start;">📦 My Orders</a></li>
+                    <li><a href="books.html" class="btn btn-outline" style="width: 100%; justify-content: flex-start;">📚 Shop Books</a></li>
+                </ul>
+            </div>
+
+            <!-- Content Area -->
+            <div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">📦</div>
+                        <div>
+                            <div class="stat-value" id="totalOrdersCount">0</div>
+                            <div class="stat-label">Total Orders Placed</div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="font-size: 1.4rem; margin-bottom: 1rem;">Order History</h3>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Book Item</th>
+                                <th>Qty</th>
+                                <th>Total Price</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="userOrdersTableBody">
+                            <!-- Populated by user-dashboard.js -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 BookHub – University Web Development Project.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/user-dashboard.js"></script>
+</body>
+</html>

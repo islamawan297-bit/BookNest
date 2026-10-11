@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore our extensive collection of books. Filter by category, search titles, and order online.">
+    <title>Book Store Catalog - BookHub</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">📚</span> BookHub
+            </a>
+            <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation menu">☰</button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="books.html" class="nav-link active">Books</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li id="adminLinkContainer"></li>
+            </ul>
+            <div class="nav-actions" id="navActions"></div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Explore Our Book Collection</h1>
+            <p>Find your next read from our carefully curated catalog</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container section">
+        <!-- Filter & Search Bar -->
+        <div class="filter-bar">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="searchInput" class="search-input" placeholder="Search by title, author, or keyword...">
+            </div>
+
+            <div class="category-filter">
+                <button class="filter-btn active" data-category="All">All Books</button>
+                <button class="filter-btn" data-category="Tech & Science">Tech & Science</button>
+                <button class="filter-btn" data-category="Fiction">Fiction</button>
+                <button class="filter-btn" data-category="Non-Fiction">Non-Fiction</button>
+                <button class="filter-btn" data-category="Fantasy">Fantasy</button>
+                <button class="filter-btn" data-category="Business">Business</button>
+                <button class="filter-btn" data-category="Biography">Biography</button>
+            </div>
+        </div>
+
+        <!-- Books Grid -->
+        <div class="books-grid" id="booksGrid">
+            <!-- Dynamically populated by books.js -->
+        </div>
+    </main>
+
+    <!-- Modal Container for Quick Order -->
+    <div id="modalContainer"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 BookHub – University Web Development Project.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/books.js"></script>
+</body>
+</html>
